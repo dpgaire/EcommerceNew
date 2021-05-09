@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 
+
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -12,7 +14,19 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::namespace('App\Http\Controllers')->group(function () {
+    Auth::routes();
+    
+});
 
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/login','LoginController@index');
+
+
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
