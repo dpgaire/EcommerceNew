@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HomeController;
 
 
 
@@ -20,13 +21,19 @@ Route::namespace('App\Http\Controllers')->group(function () {
 });
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('header');
 });
 
-Route::get('/login','LoginController@index');
+
 
 
 
 Auth::routes();
-
+Route::get('/header','HeaderController@index');
+Route::get('/about','AboutController@index');
+Route::get('/contact','ContactController@index');
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+// Route::get('/login','LoginController@index');
+
+
+
